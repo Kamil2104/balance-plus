@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Balance+ ⚖️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, high-performance financial tracking dashboard built with a "Futuristic Precision" aesthetic. This project focuses on clean architecture, real-time data processing, and a seamless user experience for personal wealth management.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Key Features
 
-## React Compiler
+- **Multi-Source Rate Sync**: Dynamic fetching of USD/PLN exchange rates using a multi-endpoint fallback system (NBP & Exchangerate API).
+- **Live Portfolio Visualization**: Interactive donut charts powered by Recharts, featuring custom gradients and glassmorphism tooltips.
+- **Smart Input Processing**: Advanced numeric fields that automatically handle localized separators (commas to dots) and ensure 2-decimal precision.
+- **Instant Financial Insights**: Real-time calculation of liquidity ratios and USD exposure to provide immediate feedback on asset allocation.
+- **Zero-Latency Persistence**: Automated state synchronization with `localStorage`, acting as a "Single Source of Truth" without the need for a database.
+- **High-Fidelity UI**: A specialized dashboard layout featuring `backdrop-blur` effects, animated loaders, and glowing status indicators.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚠️ Project Scope (Internal Use)
 
-## Expanding the ESLint configuration
+This project is a **custom tool built for personal use**, prioritizing speed and visual fidelity over general-purpose features:
+- **Desktop First**: Optimized for workstation use; no mobile responsiveness implemented.
+- **Local Data**: No backend or database integration; all data is stored client-side via LocalStorage.
+- **Public Access**: No login or authentication system (designed for private, local environments).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Framework**: React 18 + Vite.
+- **Styling**: Tailwind CSS v4 using modern CSS variables and centralized theme configurations.
+- **State Management**: React Hooks (useState, useMemo, useEffect) for reactive data flow.
+- **Visualization**: Recharts for high-performance SVG data rendering.
+- **Data Integrity**: TypeScript for strict typing of financial balances and API responses.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The project follows the **Separation of Concerns** principle to ensure scalability:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `src/hooks/`: Custom business logic for external API integration (e.g., currency fetching).
+- `src/components/`: Modular UI elements and specialized input fields.
+- `src/utils/`: Logic for data persistence and global TypeScript interfaces.
+- `src/App.tsx`: The main layout engine connecting data entry with visual output.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚦 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm or pnpm
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/balance-plus.git](https://github.com/your-username/balance-plus.git)
+
+2. Install dependencies:
+   ```bash
+  npm install
+3. Start the development server:
+   ```bash
+   npm run dev
