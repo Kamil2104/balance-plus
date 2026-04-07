@@ -25,7 +25,11 @@ function App() {
     return () => window.removeEventListener("resize", update);
   }, []);
   const updateAccount = (key: keyof BalanceData, value: number) => {
-    setAccounts((prev) => ({ ...prev, [key]: value }));
+    setAccounts((prev) => ({
+      ...prev,
+      [key]: value,
+      updatedAt: new Date().toISOString(),
+    }));
   };
 
   return (

@@ -29,6 +29,18 @@ const formatPln = (value: number) =>
 const DataView = ({ accounts, usdPln }: DataViewProps) => {
   const rate = usdPln ?? 3.72; // fallback if rate is not available yet
 
+  const lastUpdatedText = accounts.updatedAt
+    ? (() => {
+        const dt = new Date(accounts.updatedAt);
+        const date = dt.toLocaleDateString("en-GB", { dateStyle: "medium" });
+        const time = dt.toLocaleTimeString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        return `${date} at ${time}`;
+      })()
+    : "No data yet";
+
   const data = useMemo(
     () => [
       { name: "Main", value: accounts.main },
@@ -53,10 +65,11 @@ const DataView = ({ accounts, usdPln }: DataViewProps) => {
           </p>
           <h2 className="text-3xl font-semibold text-white">Data View</h2>
         </div>
-        <div className="w-full max-w-56 rounded-xl border border-white/15 bg-linear-to-br from-black/10 via-white/6 to-black/20 px-4 py-3 shadow-[0_10px_22px_rgba(0,0,0,0.28)] flex items-center justify-between gap-3 backdrop-blur">
+        <div className="w-65 rounded-xl border border-white/15 bg-linear-to-br from-black/10 via-white/6 to-black/20 px-4 py-3 shadow-[0_10px_22px_rgba(0,0,0,0.28)] flex items-center justify-between backdrop-blur">
           <div className="leading-tight">
             <p className="text-[10px] uppercase tracking-[0.18em] text-white/55">Total balance</p>
             <div className="text-2xl font-semibold text-white tracking-tight">{formatPln(total)}</div>
+            <p className="text-[11px] text-white/55 mt-1">Last updated: {lastUpdatedText}</p>
           </div>
           <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 shadow-[0_6px_14px_rgba(0,0,0,0.3)]">
             <span className="flex items-end gap-0.5 h-5">
