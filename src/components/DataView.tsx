@@ -1,5 +1,7 @@
 import { useMemo } from "react";
+
 import AllocationItem from "./AllocationItem";
+import ColorPalette from "./ColorPalette";
 
 import {
   PieChart,
@@ -11,13 +13,12 @@ import {
 } from "recharts";
 
 import { type BalanceData } from "../utils/storage";
+import useSliceColors from "../hooks/useSliceColors";
 
 interface DataViewProps {
   accounts: BalanceData;
   usdPln: number | null;
 }
-
-const COLORS = ["#c5f36b", "#1fbf75", "#f6c344", "#94a3b8"];
 
 const formatPln = (value: number) =>
   value.toLocaleString("pl-PL", {
@@ -28,6 +29,7 @@ const formatPln = (value: number) =>
 
 const DataView = ({ accounts, usdPln }: DataViewProps) => {
   const rate = usdPln ?? 3.72; // fallback if rate is not available yet
+  const { colors, setColorAt, undo, canUndo } = useSliceColors();
 
   const lastUpdatedText = accounts.updatedAt
     ? (() => {
@@ -105,7 +107,7 @@ const DataView = ({ accounts, usdPln }: DataViewProps) => {
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${entry.name}`}
-                    fill={COLORS[index % COLORS.length]}
+                    fill={colors[index % colors.length]}
                     className="drop-shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
                   />
                 ))}
@@ -141,12 +143,20 @@ const DataView = ({ accounts, usdPln }: DataViewProps) => {
                 name={item.name}
                 value={item.value}
                 percentage={percentage}
-                color={COLORS[idx % COLORS.length]}
+                color={colors[idx % colors.length]}
                 formatPln={formatPln}
               />
             );
           })}
         </div>
+
+        <ColorPalette
+          items={data}
+          colors={colors}
+          onChange={setColorAt}
+          onUndo={undo}
+          canUndo={canUndo}
+        />
       </div>
     </div>
   );
