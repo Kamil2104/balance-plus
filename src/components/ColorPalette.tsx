@@ -28,7 +28,7 @@ const ColorPalette = ({
         disabled={!canUndo}
         className="rounded border border-white/20 bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-white/85 shadow-[0_5px_10px_rgba(0,0,0,0.2)] hover:border-white/35 hover:bg-white/15 transition disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        Cofnij
+        Undo
       </button>
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
