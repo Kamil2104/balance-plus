@@ -4,7 +4,7 @@ interface LoaderProps {
 
 const Loader = ({ message = "Fetching latest USD/PLN rate…" }: LoaderProps) => {
   return (
-    <div className="w-full flex items-center justify-center py-24">
+    <div className="w-full min-h-screen flex items-center justify-center">
       <div className="flex flex-col items-center gap-8">
         <div className="relative inline-flex items-center justify-center px-6">
           <div className="relative h-28 w-28">
@@ -23,4 +23,3 @@ const Loader = ({ message = "Fetching latest USD/PLN rate…" }: LoaderProps) =>
 };
 
 export default Loader;
-
