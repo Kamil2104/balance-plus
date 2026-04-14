@@ -84,7 +84,7 @@ const DataView = ({ accounts, usdPln }: DataViewProps) => {
       </div>
 
       <div className="flex-1 flex flex-col gap-6">
-        <div className="h-full min-h-80 rounded-3xl border border-white/10 bg-white/10 p-4 shadow-inner">
+        <div className="h-full min-h-72 rounded-3xl border border-white/10 bg-white/10 p-4 shadow-inner">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <defs>
@@ -99,8 +99,8 @@ const DataView = ({ accounts, usdPln }: DataViewProps) => {
                 nameKey="name"
                 cx="50%"
                 cy="50%"
-                innerRadius={80}
-                outerRadius={135}
+                innerRadius={70}
+                outerRadius={115}
                 paddingAngle={3}
                 stroke="rgba(255,255,255,0.08)"
               >
