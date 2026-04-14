@@ -6,6 +6,7 @@ Premium, desktop-first portfolio tracker with a futuristic, glassy aesthetic. Tr
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+[![Deploy with Vercel](https://vercel.com/button)](https://twoj-link-z-vercela.vercel.app)
 
 ## ✨ Features
 - **Multi-source rate sync**: USD/PLN from Exchangerate API with NBP fallback and safe default.
