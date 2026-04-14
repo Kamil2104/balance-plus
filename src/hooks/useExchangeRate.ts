@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 
+type NbpRatesResponse = {
+  rates?: Array<{
+    ask?: number;
+  }>;
+};
+
 export const useExchangeRate = () => {
   const [rate, setRate] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -8,41 +14,26 @@ export const useExchangeRate = () => {
     let cancelled = false;
 
     const fetchRate = async () => {
-      const tryFetch = async (url: string, extractor: (json: unknown) => number | null) => {
-        try {
-          const res = await fetch(url);
-          const json = await res.json();
-          const parsed = extractor(json);
-          if (typeof parsed === "number" && !Number.isNaN(parsed)) return parsed;
-        } catch (e) {
-          console.warn("rate fetch failed for", url, e);
+      try {
+        const res = await fetch("https://api.nbp.pl/api/exchangerates/rates/c/usd?format=json", {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!res.ok) throw new Error(`NBP returned ${res.status}`);
+
+        const data: NbpRatesResponse = await res.json();
+        const ask = data?.rates?.[0]?.ask;
+
+        if (!cancelled && typeof ask === "number" && !Number.isNaN(ask)) {
+          setRate(ask);
         }
-        return null;
-      };
-
-      const primary = await tryFetch(
-        "https://api.exchangerate.host/latest?base=USD&symbols=PLN",
-        (json) => (json as { rates?: Record<string, number> })?.rates?.PLN ?? null,
-      );
-      if (!cancelled && primary) {
-        setRate(primary);
-        setLoading(false);
-        return;
-      }
-
-      const nbp = await tryFetch(
-        "https://api.nbp.pl/api/exchangerates/rates/a/usd?format=json",
-        (json) => (json as { rates?: Array<{ mid?: number }> })?.rates?.[0]?.mid ?? null,
-      );
-      if (!cancelled && nbp) {
-        setRate(nbp);
-        setLoading(false);
-        return;
-      }
-
-      if (!cancelled) {
-        setRate(3.71);
-        setLoading(false);
+      } catch (err) {
+        console.warn("Failed to fetch USD/PLN selling rate from NBP", err);
+        if (!cancelled) setRate(null);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
     };
 
@@ -55,4 +46,3 @@ export const useExchangeRate = () => {
 
   return { rate, loading } as const;
 };
-
