@@ -60,8 +60,8 @@ const DataView = ({ accounts, usdPln }: DataViewProps) => {
 
   return (
     <div className="w-full max-w-full flex-1 min-h-100 sm:min-h-110 lg:min-h-120 lg:max-h-screen h-full rounded-3xl border border-white/10 bg-linear-to-br from-white/10 via-white/5 to-white/10 p-4 sm:p-6 lg:p-7 shadow-[0_25px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl flex flex-col gap-6 lg:gap-7 overflow-hidden">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <div className="flex flex-col gap-1">
           <p className="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-white/50">
             Portfolio split
           </p>
