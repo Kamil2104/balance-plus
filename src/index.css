@@ -12,7 +12,7 @@
 
 html,
 body {
-  background: #0a0a0a;
+ background-color: color-mix(in oklab, var(--color-black) 95%, transparent);
   color: #ffffff;
   overscroll-behavior-y: contain;
   min-height: 100vh;
@@ -21,5 +21,5 @@ body {
 
 #root {
   min-height: 100vh;
-  background: #0a0a0a;
+  background-color: color-mix(in oklab, var(--color-black) 95%, transparent);
 }
