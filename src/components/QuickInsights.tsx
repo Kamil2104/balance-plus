@@ -31,18 +31,20 @@ const QuickInsights = ({ accounts, total, brokerPln, formatPln, rateReady }: Qui
   return (
     <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 shadow-inner space-y-3">
       <p className="text-xs uppercase tracking-[0.18em] text-white/55">Quick insights</p>
-      <div className="flex flex-col gap-2 text-sm text-white/75">
-        <div className="flex justify-between">
-          <span>Highest bucket</span>
-          <span className="font-semibold">{topLabel}</span>
+      <div className="flex flex-col gap-3 text-sm text-white/75">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-0">
+          <span className="text-white/75">Highest bucket</span>
+          <span className="font-semibold text-white">{topLabel}</span>
         </div>
-        <div className="flex justify-between">
-          <span>Liquid ratio (Main + Cash)</span>
-          <span className="font-semibold">{liquidRatio}</span>
+        <div className="h-px bg-white/8 sm:hidden" />
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-0">
+          <span className="text-white/75">Liquid ratio (Main + Cash)</span>
+          <span className="font-semibold text-white">{liquidRatio}</span>
         </div>
-        <div className="flex justify-between">
-          <span>USD exposure</span>
-          <span className="font-semibold">{usdExposure}</span>
+        <div className="h-px bg-white/8 sm:hidden" />
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-0">
+          <span className="text-white/75">USD exposure</span>
+          <span className="font-semibold text-white">{usdExposure}</span>
         </div>
       </div>
     </div>
@@ -50,4 +52,3 @@ const QuickInsights = ({ accounts, total, brokerPln, formatPln, rateReady }: Qui
 };
 
 export default QuickInsights;
-

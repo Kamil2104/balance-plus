@@ -34,7 +34,7 @@ const DataInput = ({ accounts, onChange, usdPln }: DataInputProps) => {
   });
 
   return (
-    <div className="w-full max-w-md min-h-130 flex flex-col gap-6 rounded-3xl border border-white/10 bg-linear-to-b from-white/10 via-white/6 to-transparent p-8 shadow-[0_25px_80px_rgba(0,0,0,0.55)] backdrop-blur-lg">
+    <div className="w-full max-w-full min-h-100 sm:min-h-110 lg:min-h-120 h-full flex flex-col flex-1 gap-5 sm:gap-6 rounded-3xl border border-white/10 bg-linear-to-b from-white/10 via-white/6 to-transparent p-4 sm:p-6 lg:p-7 shadow-[0_18px_60px_rgba(0,0,0,0.55)] backdrop-blur-lg">
       <div className="space-y-2">
         <p className="text-xs uppercase tracking-[0.25em] text-white/50">
           Balances
@@ -52,7 +52,7 @@ const DataInput = ({ accounts, onChange, usdPln }: DataInputProps) => {
         <BalanceMeta dateLabel={dateLabel} rateText={rateReady ? rate.toFixed(2) : ""} />
       </div>
 
-      <div className="flex-1 space-y-5">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-5">
         <InputField
           label="Main Account (PLN)"
           value={accounts.main}
