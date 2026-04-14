@@ -1,59 +1,57 @@
 # Balance+ ⚖️
 
-A premium, high-performance financial tracking dashboard built with a "Futuristic Precision" aesthetic. This project focuses on clean architecture, real-time data processing, and a seamless user experience for personal wealth management.
+Premium, desktop-first portfolio tracker with a futuristic, glassy aesthetic. Tracks balances, visualizes allocation, and persists everything locally for ultra-fast, private use.
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-## ✨ Key Features
+## ✨ Features
+- **Multi-source rate sync**: USD/PLN from Exchangerate API with NBP fallback and safe default.
++- **Live portfolio donut**: Recharts chart with glow, custom tooltip, and responsive sizing across breakpoints.
+- **Color palette with undo**: Per-slice pickers + undo history, persisted in `localStorage` (`sliceColors`).
+- **Smart numeric inputs**: Accepts commas/dots, auto-rounds to 2 decimals.
+- **Quick insights**: Highest bucket, liquidity ratio, USD exposure—stack nicely on small screens.
+- **Stateful persistence**: Balances + `updatedAt` stored in `localStorage`; no backend.
+- **Centered loading**: Full-screen loader while rates fetch.
 
-- **Multi-Source Rate Sync**: Dynamic fetching of USD/PLN exchange rates using a multi-endpoint fallback system (NBP & Exchangerate API).
-- **Live Portfolio Visualization**: Interactive donut charts powered by Recharts, featuring custom gradients and glassmorphism tooltips.
-- **Smart Input Processing**: Advanced numeric fields that automatically handle localized separators (commas to dots) and ensure 2-decimal precision.
-- **Instant Financial Insights**: Real-time calculation of liquidity ratios and USD exposure to provide immediate feedback on asset allocation.
-- **Zero-Latency Persistence**: Automated state synchronization with `localStorage`, acting as a "Single Source of Truth" without the need for a database.
-- **High-Fidelity UI**: A specialized dashboard layout featuring `backdrop-blur` effects, animated loaders, and glowing status indicators.
+## ⚠️ Scope
+- **Local-only** data (no auth, no DB).
+- Personal/internal tool.
 
-## ⚠️ Project Scope (Internal Use)
+## 🛠️ Tech
+- React 18 + Vite
+- TypeScript
+- Tailwind CSS v4 (custom breakpoints)
+- Recharts
 
-This project is a **custom tool built for personal use**, prioritizing speed and visual fidelity over general-purpose features:
-- **Desktop First**: Optimized for workstation use; no mobile responsiveness implemented.
-- **Local Data**: No backend or database integration; all data is stored client-side via LocalStorage.
-- **Public Access**: No login or authentication system (designed for private, local environments).
+## 🧭 Layout & Breakpoints
+- Custom breakpoints in `src/index.css` (e.g., `lg` raised to `1200px`, `xl` 1440px, `2xl` 1600px).
+- Layout shifts to 40/60 (Input/View) from `sm` up.
+- Small screens: Quick Insights stack labels/values with subtle separators.
 
-## 🛠️ Tech Stack
-
-- **Framework**: React 18 + Vite.
-- **Styling**: Tailwind CSS v4 using modern CSS variables and centralized theme configurations.
-- **State Management**: React Hooks (useState, useMemo, useEffect) for reactive data flow.
-- **Visualization**: Recharts for high-performance SVG data rendering.
-- **Data Integrity**: TypeScript for strict typing of financial balances and API responses.
-
-## 📂 Project Structure
-
-The project follows the **Separation of Concerns** principle to ensure scalability:
-
-- `src/hooks/`: Custom business logic for external API integration (e.g., currency fetching).
-- `src/components/`: Modular UI elements and specialized input fields.
-- `src/utils/`: Logic for data persistence and global TypeScript interfaces.
-- `src/App.tsx`: The main layout engine connecting data entry with visual output.
+## 🎨 Color Controls
+- Open the palette to pick exact colors per slice.
+- Changes and history persist across reloads.
 
 ## 🚦 Getting Started
+```bash
+git clone https://github.com/your-username/balance-plus.git
+cd balance-plus
+npm install
+npm run dev
+```
 
-### Prerequisites
-- Node.js (Latest LTS recommended)
-- npm or pnpm
+## 📂 Structure
+- `src/hooks/` – exchange rate logic, color state hook.
+- `src/components/` – inputs, chart view, color palette, loader.
+- `src/utils/` – persistence helpers & types.
+- `src/App.tsx` – layout glue (data entry ↔ visualization).
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/balance-plus.git](https://github.com/your-username/balance-plus.git)
+## 🧪 Scripts
+- `npm run dev` – dev server
+- `npm run build` – production build
 
-2. Install dependencies:
-   ```bash
-  npm install
-3. Start the development server:
-   ```bash
-   npm run dev
+## 🤝 Contributing
+Private tooling; no formal contributions expected. Suggestions welcome via issues.
