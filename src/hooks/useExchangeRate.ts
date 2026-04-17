@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type NbpRatesResponse = {
   rates?: Array<{
-    ask?: number;
+    bid?: number;
   }>;
 };
 
@@ -24,13 +24,13 @@ export const useExchangeRate = () => {
         if (!res.ok) throw new Error(`NBP returned ${res.status}`);
 
         const data: NbpRatesResponse = await res.json();
-        const ask = data?.rates?.[0]?.ask;
+        const bid = data?.rates?.[0]?.bid;
 
-        if (!cancelled && typeof ask === "number" && !Number.isNaN(ask)) {
-          setRate(ask);
+        if (!cancelled && typeof bid === "number" && !Number.isNaN(bid)) {
+          setRate(bid);
         }
       } catch (err) {
-        console.warn("Failed to fetch USD/PLN selling rate from NBP", err);
+        console.warn("Failed to fetch USD/PLN buying rate from NBP", err);
         if (!cancelled) setRate(null);
       } finally {
         if (!cancelled) setLoading(false);
